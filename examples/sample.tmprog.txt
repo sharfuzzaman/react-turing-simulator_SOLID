@@ -1,0 +1,16 @@
+# This file contains an example Turing machine program in text format for testing purposes.
+# The format includes the initial tape content, head position, and transition rules.
+
+# Example Turing Machine Program
+# Initial Tape: 1, 0, 1, 1, 0
+# Head Position: 0
+# Transitions:
+# State 0, Read 1 -> Write 1, Move Right, Go to State 1
+# State 1, Read 0 -> Write 1, Move Left, Go to State 0
+# State 0, Read Blank -> Write Blank, Move Right, Go to Halt
+
+1 0 1 1 0
+0
+0 1 1 R 1
+1 0 1 L 0
+0 _ _ R Halt
