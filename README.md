@@ -12,7 +12,7 @@ This project implements a Turing Machine using React.js, adhering to SOLID desig
 ## Project Structure
 
 ```
-react-turing-machine
+react-turing-simulator
 ├── src
 │   ├── index.tsx
 │   ├── App.tsx
