@@ -1,4 +1,4 @@
-# React Turing Machine
+# React Turing Simulator
 
 This project implements a Turing Machine using React.js, adhering to SOLID design principles. It can read and execute Turing machine programs from both `.tmprog.txt` and `.tmprog.json` files.
 
