@@ -1,40 +1,4 @@
-// // Tape.ts
-// export interface ITape {
-//     readAt(pos: number): string;
-//     writeAt(pos: number, value: string): void;
-//     getTape(): string;
-//     getLength(): number;
-// }
-
-// // You could also keep the Tape class implementing this interface
-// export class Tape implements ITape {
-//     private data: string[];
-
-//     constructor(initialData: string) {
-//         this.data = initialData.split('');
-//     }
-
-//     readAt(pos: number): string {
-//         return this.data[pos] || '';
-//     }
-
-//     writeAt(pos: number, value: string): void {
-//         this.data[pos] = value;
-//     }
-
-//     getTape(): string {
-//         return this.data.join('');
-//     }
-
-//     getLength(): number {
-//         return this.data.length;
-//     }
-// }
-
 import { ITape } from './interfaces/ITape';
-import { ITapeReader } from './interfaces/ITapeReader';
-import { ITapeWriter } from './interfaces/ITapeWriter';
-import { ITapeInfo } from './interfaces/ITapeInfo';
 
 export class Tape implements ITape {
     private data: string[];

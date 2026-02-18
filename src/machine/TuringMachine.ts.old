@@ -1,0 +1,77 @@
+import { Head } from './Head';
+import { Tape } from './Tape';
+import { State } from './State';
+import { RuleEngine } from './RuleEngine';
+import { ProgramConfig } from './types';
+
+export class TuringMachine {
+    private head: Head;
+    private tape: Tape;
+    private state: State;
+    private ruleEngine: RuleEngine;
+    private history: string[] = [];
+
+    constructor(private config: ProgramConfig) {
+        this.head = new Head(config.headStartPosition);
+        this.tape = new Tape(config.tape);
+        this.state = new State('0');
+        this.ruleEngine = new RuleEngine(config.rules);
+    }
+
+    step(): boolean {
+        const symbol = this.tape.readAt(this.head.getPosition());
+        console.log(`symbol ${symbol}`);
+        const rule = this.ruleEngine.findRule(this.state.getCurrent(), symbol);
+        console.log("rule", rule);
+
+        if (!rule) return false;
+
+        // Apply rule
+        this.tape.writeAt(this.head.getPosition(), rule.write);
+        if (rule.move === 'L') this.head.moveLeft();
+        else this.head.moveRight();
+        this.state.transitionTo(rule.nextState);
+
+        // Save snapshot
+        this.history.push(this.getTapeState());
+        return true;
+    }
+    async runAsync(onStep: () => void, delay = 0) {
+        const executeStep = () => {
+            const applied = this.step();
+            onStep(); // tell React to update UI
+
+            if (applied) {
+                setTimeout(executeStep, delay);
+            }
+        };
+
+        executeStep();
+    }
+    // run(maxSteps = 10000) {
+    //     let steps = 0;
+    //     while (steps < maxSteps) {
+    //         const applied = this.step();
+    //         if (!applied) break;
+    //         steps++;
+    //     }
+    // }
+
+
+    getTapeState(): string {
+        console.log(this.tape.getTape());
+        return this.tape.getTape();
+    }
+
+    getHeadPosition(): number {
+        return this.head.getPosition();
+    }
+
+    getCurrentState(): string {
+        return this.state.getCurrent();
+    }
+
+    getHistory(): string[] {
+        return this.history;
+    }
+}
