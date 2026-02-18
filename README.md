@@ -76,7 +76,7 @@ Parsing is implemented using abstraction (following the **Open/Closed Principle*
 ```bash
 # Clone the repository
 git clone https://github.com/sharfuzzaman/turing_machine_SOLID_react.git
-cd react-turing-simulator
+cd react-turing-simulator_SOLID
 
 # Install dependencies
 npm install
@@ -117,7 +117,7 @@ src/
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd react-turing-machine
+   cd react-turing-simulator_SOLID
    ```
 
 2. **Install dependencies:**
