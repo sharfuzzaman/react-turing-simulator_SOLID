@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom'; // Provides .toBeInTheDocument()
-import TapeView from '../TapeView';
 import { expect, test, describe } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest'; 
+import TapeView from '../TapeView';
 
 describe('TapeView Component', () => {
   test('renders tape content correctly from a string', () => {
