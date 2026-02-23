@@ -1,3 +1,6 @@
+/**
+ * @vitest-environment jsdom
+ */
 import { expect, test, describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest'; 
@@ -5,13 +8,10 @@ import TapeView from '../TapeView';
 
 describe('TapeView Component', () => {
   test('renders tape content correctly from a string', () => {
-    // PASSING A STRING TO MATCH THE "tape: string" PROP DEFINITION
     render(<TapeView tape="101" headPosition={1} />);
 
-    // Verify individual symbols are rendered
     expect(screen.getByText('0')).toBeInTheDocument();
     
-    // Use getAllByText for repeating symbols like '1'
     const ones = screen.getAllByText('1');
     expect(ones).toHaveLength(2);
   });
